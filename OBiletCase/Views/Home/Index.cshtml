@@ -1,0 +1,76 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Vereyon.Web.FlashMessage
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col-12">
+    <section class="search-box">
+        <div class="row">
+            <div class="col-12">
+                <form asp-controller="Journey" asp-action="Index" method="post">
+                    <div class="search-box-inner d-xl-flex">
+                        <section class="search-item from">
+                            <aside class="icon">
+                                <img alt="location from icon"
+                                     src="img/location-icon.svg" />
+                            </aside>
+                            <aside class="info">
+                                <h3 class="title">Nereden</h3>
+                                <div class="value">
+                                    <select class="origin form-control" name="origin" data-live-search="true" title="İl veya İlçe Adı Yazın">
+                                    </select>
+                                </div>
+
+                            </aside>
+                        </section>
+                        <section class="search-item to">
+                            <div class="transfer-icon" onclick="Change()">
+                                <img src="img/transfer-icon.svg" />
+                            </div>
+                            <aside class="icon">
+                                <img alt="location to icon"
+                                     src="img/location-icon-dotted.svg" />
+                            </aside>
+                            <aside class="info">
+                                <h3 class="title">Nereye</h3>
+                                <div class="value">
+                                    <select class="destination form-control" name="destination" data-live-search="true" title="İl veya İlçe Adı Yazın">
+                                    </select>
+                                </div>
+                            </aside>
+                        </section>
+                        <section class="search-item date">
+                            <aside class="icon">
+                                <img alt="location from icon"
+                                     src="img/calendar.svg" />
+                            </aside>
+                            <aside class="info">
+                                <h3 class="title">Tarih</h3>
+                                <div class="value">
+                                    <input type="text" id="JourneyDate" name="departureDate" class="form-control date">
+                              
+                                </div>
+                            </aside>
+                            <div class="buttons">
+                                <a class="button " onclick="SetToday()">
+                                    Bugün
+                                </a>
+                                <a class="button active" onclick="SetTomorrow()">
+                                    Yarın
+                                </a>
+                            </div>
+                        </section>
+                        <flash dismissable="false" />
+                        <div class="break"></div>
+                        <section class="search-button-section">
+                            <button class="btn btn-primary search-button">Bileti Bul </button>
+
+                        </section>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>

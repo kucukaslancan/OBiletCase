@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Journey>
+@{
+    ViewData["Title"] = "Sefer Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div class="col-12">
+    <section class="search-box">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-box-inner d-xl-flex">
+                    <div class="journey-list">
+                        @if(Model is not null)
+                        {
+                            foreach (var journey in Model)
+                            {
+                                <div class="journey-item">
+                                    <div class="header-box">
+                                        <div class="time-info">
+                                            <div class="time">
+                                                <span class="title">KALKIŞ</span>
+                                                <span class="info">@journey.Departure.ToShortTimeString()</span>
+                                            </div>
+                                            <img alt="location from icon" class="location-img"
+                                         src="img/arrow-right.svg" />
+                                            <div class="time">
+                                                <span class="title">VARIŞ</span>
+                                                <span class="info">@journey.Arrival.ToShortTimeString()</span>
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <div class="label">
+                                                @journey.Price.ToString("n2") @journey.Currency
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <span>@journey.OriginName</span>
+                                        -
+                                        <span>@journey.DestinationName</span>
+                                    </div>
+                                </div>
+                            }
+                        }
+                       
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
